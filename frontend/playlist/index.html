@@ -1,0 +1,93 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Clavo</title>
+
+<style>
+	body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, fieldset, legend, button, input, textarea, th, td { margin:0; padding:0;border:none;list-style:none; }
+	#banner{ width:662px; height:300px; margin:100px auto; position:relative; overflow:hidden;}
+	#banner #picUl li{ position:absolute; top:0; left:0;}
+	#banner #picUl li img{ width:600px;}
+	#banner #tab{ width:62px; height:100%; position:absolute; right:0; background:#000;}
+	#banner #tab li { width:62px;text-align:center; position:relative;}
+	#banner #tab li a{ text-decoration:none; color:#fff; font-size:15px;line-height:50px; display:block;}
+	#banner #tab li span{
+	width: 0;
+	height: 0;
+	display: block;
+	position: absolute;
+	top: 50%;
+	left:-15px;
+	margin-top:-3px;
+	border-width: 8px;
+	border-style: solid;
+	border-color: transparent rgba(255,0,0,0.6) transparent transparent;
+	display:none;
+}
+	#banner #tab li.active{ background:rgba(255,0,0,0.6);}
+	#banner #tab li.active .on{ display:block;}
+</style>
+
+</head>
+<body>
+
+<div id="banner">
+	<div id="pic">
+		<ul id="picUl">
+			<li><a href="#"><img src="images/b1.jpg"></a></li>
+			<li><a href="#"><img src="images/b2.jpg"></a></li>
+			<li><a href="#"><img src="images/b3.jpg"></a></li>
+			<li><a href="#"><img src="images/b4.jpg"></a></li>
+			<li><a href="#"><img src="images/b5.jpg"></a></li>
+		</ul>
+	</div>
+	<div id="tab">
+		<ul id="tabUl">
+			<li class="active"><a href="#">Artwork1</a><span class="on"></span></li>
+			<li><a href="#">Artwork2</a><span></span></li>
+			<li><a href="#">Artwork3</a><span></span></li>
+			<li><a href="#">Artwork4</a><span></span></li>
+			<li><a href="#">Artwork5</a><span></span></li>
+		</ul>
+	</div>
+</div>
+
+<script src="js/jquery.js"></script>
+<script type="text/javascript">
+	$(function(){
+		var timer=null;
+		var index=0;
+		var picLi=$("#banner #picUl li");
+		var tabLi=$("#banner #tabUl li" );
+		var tabSp=$("#banner #tabUl li span")
+		var size=$("#banner #picUl li").size();
+		tabLi.mouseover(function(){
+			index=$(this).index();
+			$(this).addClass('active').siblings().removeClass('active');
+			tabSp.eq(index).addClass('on').siblings().removeClass('on');
+			picLi.eq(index).fadeIn().siblings().fadeOut();
+		});
+		$("#picUl").hover(function(){
+			clearInterval(timer);
+		},function(){timer=setInterval(move,1500);});
+		window.clearInterval(timer);
+		timer=window.setInterval(move,1500);
+		function move(){
+			index++;
+			if(index==size)
+			{
+			  index=0;
+			}
+			tabLi.eq(index).addClass('active').siblings().removeClass('active');
+			tabSp.eq(index).addClass('on').siblings().removeClass('on');
+			picLi.eq(index).fadeIn().siblings().fadeOut();
+		}
+	})
+</script>
+<div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';">
+<p>Supported browsers: IE8, 360, FireFox, Chrome, Safari, Opera.</p>
+<p>Open <a href="http://www.google.com/" target="_blank">Google</a></p>
+</div>
+</body>
+</html>

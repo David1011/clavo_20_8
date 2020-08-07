@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Clavo NFC blockchain list</title>
+
+<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+<!-- <script type="text/javascript" src="back-endPage.js"></script> --> <!-- 1 -->
+<script type="text/javascript" src="js/front-endPage.js"></script><!-- 2 -->
+<script type="text/javascript" src="js/data2.js"></script>
+
+<link rel="stylesheet" type="text/css" href="css/table.css">
+
+</head>
+<body>
+
+<div id="histroyBox"></div>
+<script type="text/javascript">
+    
+    $('#histroyBox').CJJTable({
+       'title':["SID","Description","Artist","Catagory","Date Time"],
+       'body':["taskCode","startAddr","endAddr","varietiesTypeName","createDate","customerName"],
+       'display':[1,1,1,1,1,2],
+       'pageNUmber':10,
+       'pageLength':data.length,
+       'url':data,
+       dbTrclick:function(e){
+        alert(e.find('.taskCode').html())
+       }
+    });
+    
+    /*$('#histroyBox').CJJTable({
+        'title':["SID","Description","Artist","Catagory"],
+        'body':["contactName","contactMobliePhone","carrierName","taskNum","taskCustomerExpectPrice","taskCustomerBudgetFreight"],//tbody td 
+        'display':[1,1,1,1,2,2],
+        'pageJson':{
+            "taskId":528710,
+            "pageSize":100,
+            "token":"yJUmunFeG3REqisYAmCfeA"
+        },
+        'url':'api/quoted/quotedList',
+        dbTrclick:function(that){ 
+            alert(that.find('.contactName').html())
+        }
+    });*/
+</script>
+<div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';">
+<p>Supported browsers: IE8, 360, FireFox, Chrome, Safari, Opera.</p>
+<p>Open <a href="playlist/index.html" target="_blank"> playlist</a></p>
+</div>
+</body>
+</html>
